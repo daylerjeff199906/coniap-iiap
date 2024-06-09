@@ -25,7 +25,7 @@ export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         defaultSize={75}
         className="h-[calc(100vh-4px)]"
       >
-        {children}
+        <main className="container">{children}</main>
       </ResizablePanel>
     </ResizablePanelGroup>
   )

@@ -9,6 +9,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { IRow, ICol } from '@/types'
+import { TopSection } from './TopSection'
 
 interface IProps {
   cols: ICol[]
@@ -20,7 +21,8 @@ export const TableCustom = (props: IProps) => {
   const { cols, rows, tableCaption } = props
 
   return (
-    <>
+    <main className="flex flex-col gap-2">
+      <TopSection />
       <Table>
         <TableCaption>{tableCaption}</TableCaption>
         <TableHeader className="bg-gray-100">
@@ -48,6 +50,6 @@ export const TableCustom = (props: IProps) => {
         </TableBody>
         <TableFooter></TableFooter>
       </Table>
-    </>
+    </main>
   )
 }
