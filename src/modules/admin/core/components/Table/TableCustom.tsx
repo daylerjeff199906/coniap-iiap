@@ -23,12 +23,14 @@ export const TableCustom = (props: IProps) => {
     <>
       <Table>
         <TableCaption>{tableCaption}</TableCaption>
-        <TableHeader className="bg-gray-100 ">
+        <TableHeader className="bg-gray-100">
           <TableRow>
             {cols.map((col, index) => (
               <TableHead
                 key={index}
-                className={`text-${col.justify} w-[${100 / cols.length}%] font-bold text-xs text-gray-900`}
+                className={`text-${col.justify} w-[${
+                  100 / cols.length
+                }%] font-bold text-xs text-gray-900`}
               >
                 {col.label}
               </TableHead>
