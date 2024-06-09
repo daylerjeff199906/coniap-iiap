@@ -18,6 +18,11 @@ interface IProps {
 
 export const BottomSection = (props: IProps) => {
   const { page, rows, setPage, setSize, size, total } = props
+
+  const handleSetPage = (page: number) => {
+    setPage(page)
+  }
+
   return (
     <>
       <main className="flex justify-between items-center w-full px-4 pb-2">
@@ -31,20 +36,24 @@ export const BottomSection = (props: IProps) => {
         <section className="w-full flex justify-end">
           <div className="flex items-center gap-3">
             <h1 className="text-xs w-full">
-              Página {page + 1} de {Math.ceil(total / size)}
+              Página {page} de {Math.ceil(total / size)}
             </h1>
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious
-                    href="#"
-                    className="text-xs"
+                    className="text-xs hover:cursor-pointer"
+                    onClick={() => {
+                      page > 1 && handleSetPage(page - 1)
+                    }}
                   />
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationNext
-                    href="#"
-                    className="text-xs"
+                    className="text-xs hover:cursor-pointer"
+                    onClick={() => {
+                      page < Math.ceil(total / size) && handleSetPage(page + 1)
+                    }}
                   />
                 </PaginationItem>
               </PaginationContent>

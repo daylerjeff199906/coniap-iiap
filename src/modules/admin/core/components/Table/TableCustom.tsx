@@ -16,15 +16,21 @@ interface IProps {
   cols: ICol[]
   rows: IRow[]
   tableCaption?: string
+  //Top section
   hiddenInput?: boolean
   placeholder?: string
   inputValue?: string
   setInputValue?: (value: string) => void
   rightSection?: React.ReactNode
+  //Bottom section
+  page?: number
+  size?: number
+  setPage?: (page: number) => void
+  setSize?: (size: number) => void
 }
 
 export const TableCustom = (props: IProps) => {
-  const { cols, rows, tableCaption } = props
+  const { cols, rows, tableCaption, setPage, setSize } = props
 
   const renderRow = (row: IRow) => {
     return (
@@ -84,11 +90,11 @@ export const TableCustom = (props: IProps) => {
           </TableBody>
         </Table>
         <BottomSection
-          page={1}
+          page={props.page || 1}
+          size={props.size || 10}
           rows={rows}
-          setPage={() => {}}
-          setSize={() => {}}
-          size={10}
+          setPage={setPage || (() => {})}
+          setSize={setSize || (() => {})}
           total={rows.length}
         />
       </main>

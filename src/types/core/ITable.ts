@@ -9,3 +9,9 @@ export interface ICol {
   label: string
   justify: 'left' | 'center' | 'right'
 }
+
+export interface IActions {
+  id: number
+  label: string
+  path: string
+}
