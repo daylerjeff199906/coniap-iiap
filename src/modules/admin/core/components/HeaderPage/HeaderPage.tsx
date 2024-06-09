@@ -15,7 +15,7 @@ export const HeaderPage = (props: IProps) => {
   const { title, subtitle, href, label, children, hiddenButton } = props
   return (
     <>
-      <main className="p-4 flex justify-between gap-3 items-start">
+      <main className="py-4 flex justify-between gap-3 items-start">
         <section>
           <h1 className="font-bold">{title}</h1>
           <p className="text-gray-500 text-xs">{subtitle} </p>
