@@ -1,9 +1,17 @@
+'use client'
 import { TableCustom } from '@/modules/admin'
-import { ICol, IRow, ITopic } from '@/types'
+import { ICol, ITopic } from '@/types'
+import { useFilterFromUrl } from '@/modules/core'
 
 const columns: ICol[] = [
   {
     id: 1,
+    key: 'id',
+    label: 'ID',
+    justify: 'left',
+  },
+  {
+    id: 2,
     key: 'topic',
     label: 'Tema ',
     justify: 'left',
@@ -21,7 +29,7 @@ const columns: ICol[] = [
     justify: 'left',
   },
   {
-    id: 3,
+    id: 5,
     key: 'actions',
     label: 'Acciones',
     justify: 'center',
@@ -34,6 +42,7 @@ interface IProps {
 
 export const ListTopics = (props: IProps) => {
   const { topicList } = props
+  const { getParams, updateFilter } = useFilterFromUrl()
 
   const rows = topicList?.map((topic) => {
     return {
@@ -44,12 +53,20 @@ export const ListTopics = (props: IProps) => {
     }
   })
 
+  const search = getParams('search', '')
+
+  const handleSearch = (value: string) => {
+    updateFilter('search', value)
+  }
+
   return (
     <>
       <section>
         <TableCustom
           cols={columns}
           rows={rows}
+          inputValue={search}
+          setInputValue={handleSearch}
         />
       </section>
     </>
