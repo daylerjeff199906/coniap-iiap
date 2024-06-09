@@ -12,6 +12,8 @@ import {
   CalendarDays,
   Users,
   Contact,
+  Building2,
+  Layers3,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -22,22 +24,24 @@ interface ItemMenu {
   subItems?: ItemMenu[] | null
 }
 
+const classNameIcon = 'text-gray-500 '
+
 const itemsMenu: ItemMenu[] = [
   {
     title: 'Dashboard',
-    icon: <LayoutDashboard />,
+    icon: <LayoutDashboard className={classNameIcon} />,
     path: '/admin',
     subItems: null,
   },
   {
     title: 'Programas',
-    icon: <CalendarCheck />,
+    icon: <CalendarCheck className={classNameIcon} />,
     path: '/admin/programs',
     subItems: null,
   },
   {
     title: 'Eventos',
-    icon: <CalendarDays />,
+    icon: <CalendarDays className={classNameIcon} />,
     path: '/admin/events',
     subItems: [
       {
@@ -56,7 +60,7 @@ const itemsMenu: ItemMenu[] = [
   },
   {
     title: 'Participantes',
-    icon: <Contact />,
+    icon: <Contact className={classNameIcon} />,
     path: '/admin/events',
     subItems: [
       {
@@ -74,8 +78,20 @@ const itemsMenu: ItemMenu[] = [
     ],
   },
   {
+    title: 'Temáticas',
+    icon: <Layers3 className={classNameIcon} />,
+    path: '/admin/topics',
+    subItems: null,
+  },
+  {
+    title: 'Sponsors',
+    icon: <Building2 className={classNameIcon} />,
+    path: '/admin/sponsors',
+    subItems: null,
+  },
+  {
     title: 'Usuarios',
-    icon: <Users />,
+    icon: <Users className={classNameIcon} />,
     path: '/admin/users',
     subItems: null,
   },

@@ -13,9 +13,9 @@ export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       className="rounded-lg border"
     >
       <ResizablePanel
-        defaultSize={16}
-        minSize={16}
-        maxSize={18}
+        defaultSize={12}
+        minSize={12}
+        maxSize={14}
       >
         <main className="w-full p-4 flex flex-col gap-5">
           <SideBar />
