@@ -1,11 +1,25 @@
 import { HeaderPage, ListTopics } from '@/modules/admin'
-import { ITopic } from '@/types'
+import { ISearchParams, ITopic } from '@/types'
 import { createClient } from '@/utils/supabase/server'
 
-export default async function Page() {
+interface IProps {
+  searchParams: ISearchParams
+}
+
+export default async function Page(props: IProps) {
+  const {
+    searchParams: { search = '', page, limit },
+  } = props
   const supabase = createClient()
 
-  const { data } = await supabase.from('topics').select().eq('isActived', true)
+  const currentPage = page ? parseInt(page as string) : 1
+  const currentLimit = limit ? parseInt(limit as string) : 10
+
+  const { data } = await supabase
+    .from('topics')
+    .select()
+    .ilike('name', `%${search}%`)
+    .range((currentPage - 1) * currentLimit, currentPage * currentLimit)
 
   const topics: ITopic[] = data || []
 
