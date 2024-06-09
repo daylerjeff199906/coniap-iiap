@@ -3,11 +3,15 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
+  Button,
+} from '@/components/ui'
+
+import { LayoutDashboard, CalendarCheck, CalendarDays } from 'lucide-react'
+import Link from 'next/link'
 
 interface ItemMenu {
   title: string
-  icon: string
+  icon?: JSX.Element
   path: string | null
   subItems?: ItemMenu[] | null
 }
@@ -15,19 +19,34 @@ interface ItemMenu {
 const itemsMenu: ItemMenu[] = [
   {
     title: 'Dashboard',
-    icon: 'home',
+    icon: <LayoutDashboard />,
     path: '/admin',
     subItems: null,
   },
   {
-    title: 'Users',
-    icon: 'users',
-    path: '/admin/users',
+    title: 'Programas',
+    icon: <CalendarCheck />,
+    path: '/admin/programs',
+    subItems: null,
   },
   {
-    title: 'Settings',
-    icon: 'cog',
-    path: '/admin/settings',
+    title: 'Eventos',
+    icon: <CalendarDays />,
+    path: '/admin/events',
+    subItems: [
+      {
+        title: 'Crear',
+        path: '/admin/events/create',
+      },
+      {
+        title: 'Listar',
+        path: '/admin/events',
+      },
+      {
+        title: 'Calendario',
+        path: '/admin/events/calendar',
+      },
+    ],
   },
 ]
 
@@ -44,30 +63,49 @@ export const SideBar = () => {
           collapsible
         >
           {itemsMenu.map((item, index) => (
-            <AccordionItem
+            <div
               key={index}
-              value={index.toString()}
+              className="w-full"
             >
-              <AccordionTrigger>
-                <div className="flex items-center gap-2">
-                  <i className={`fas fa-${item.icon}`}></i>
-                  <span>{item.title}</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="flex flex-col gap-2">
-                  {item.subItems?.map((subItem, subIndex) => (
-                    <div
-                      key={subIndex}
-                      className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-lg"
-                    >
-                      <i className={`fas fa-${subItem.icon}`}></i>
-                      <span>{subItem.title}</span>
+              {item.subItems ? (
+                <AccordionItem
+                  value={index.toString()}
+                  className="border-b-0"
+                >
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-2">
+                      {item.icon}
+                      <span>{item.title}</span>
                     </div>
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="flex flex-col gap-0">
+                      {item.subItems.map((subItem, subIndex) => (
+                        <Button
+                          key={subIndex}
+                          className="flex justify-start items-center text-sm"
+                          asChild
+                          variant="ghost"
+                        >
+                          <Link href={item.path || '#'}>{subItem.title}</Link>
+                        </Button>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ) : (
+                <Button
+                  className="flex items-center gap-2 w-full justify-start px-0"
+                  variant="ghost"
+                  asChild
+                >
+                  <Link href={item.path || '#'}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </Button>
+              )}
+            </div>
           ))}
         </Accordion>
       </main>
