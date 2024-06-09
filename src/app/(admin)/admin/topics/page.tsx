@@ -3,35 +3,29 @@ import { ICol, IRow } from '@/types'
 
 const columns: ICol[] = [
   {
-    id: 2,
-    key: 'image',
-    label: 'Imagen',
-    justify: 'center',
-  },
-  {
     id: 1,
     key: 'topic',
     label: 'Tema ',
-    justify: 'center',
+    justify: 'left',
   },
   {
     id: 3,
     key: 'description',
     label: 'Descripción',
-    justify: 'center',
+    justify: 'left',
   },
   {
     id: 4,
     key: 'status',
     label: 'Estado',
+    justify: 'left',
+  },
+  {
+    id: 3,
+    key: 'actions',
+    label: 'Acciones',
     justify: 'center',
   },
-  // {
-  //   id: 3,
-  //   key: 'actions',
-  //   label: 'Acciones',
-  //   justify: 'center',
-  // },
 ]
 
 const invoices: IRow[] = [
