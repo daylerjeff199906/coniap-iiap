@@ -3,7 +3,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable'
-import { SideBar } from '@/modules/admin'
+import { NavBar, SideBar } from '@/modules/admin'
 
 export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -25,6 +25,7 @@ export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         defaultSize={75}
         className="h-[calc(100vh-4px)]"
       >
+        <NavBar />
         <main className="container">{children}</main>
       </ResizablePanel>
     </ResizablePanelGroup>
