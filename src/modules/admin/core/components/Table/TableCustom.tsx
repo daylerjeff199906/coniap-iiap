@@ -37,7 +37,7 @@ export const TableCustom = (props: IProps) => {
             key={col.id}
             className={`${
               col.key === 'actions' && 'text-center'
-            } text-gray-500 font-medium py-2`}
+            } text-gray-500 font-medium py-2 min-w-24`}
           >
             {col.key === 'actions' ? (
               <RenderActions

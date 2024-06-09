@@ -1,55 +1,14 @@
-import { HeaderPage, TableCustom } from '@/modules/admin'
-import { ICol, IRow } from '@/types'
+import { HeaderPage, ListTopics } from '@/modules/admin'
+import { ITopic } from '@/types'
+import { createClient } from '@/utils/supabase/server'
 
-const columns: ICol[] = [
-  {
-    id: 1,
-    key: 'topic',
-    label: 'Tema ',
-    justify: 'left',
-  },
-  {
-    id: 3,
-    key: 'description',
-    label: 'Descripción',
-    justify: 'left',
-  },
-  {
-    id: 4,
-    key: 'status',
-    label: 'Estado',
-    justify: 'left',
-  },
-  {
-    id: 3,
-    key: 'actions',
-    label: 'Acciones',
-    justify: 'center',
-  },
-]
+export default async function Page() {
+  const supabase = createClient()
 
-const invoices: IRow[] = [
-  {
-    id: 1,
-    topic: 'Tema 1',
-    description: 'Descripción del tema 1',
-    status: 'Activo',
-  },
-  {
-    id: 2,
-    topic: 'Tema 2',
-    description: 'Descripción del tema 2',
-    status: 'Activo',
-  },
-  {
-    id: 3,
-    topic: 'Tema 3',
-    description: 'Descripción del tema 3',
-    status: 'Activo',
-  },
-]
+  const { data } = await supabase.from('topics').select().eq('isActived', true)
 
-export default function Page() {
+  const topics: ITopic[] = data || []
+
   return (
     <main>
       <HeaderPage
@@ -58,12 +17,7 @@ export default function Page() {
         href="/admin/topics/new"
         label="Nuevo tema"
       />
-      <section>
-        <TableCustom
-          cols={columns}
-          rows={invoices}
-        />
-      </section>
+      <ListTopics topicList={topics} />
     </main>
   )
 }
