@@ -5,7 +5,6 @@ import {
 } from '@/components/ui/resizable'
 import { SideBar } from '@/modules/admin'
 
-
 export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ResizablePanelGroup
@@ -26,9 +25,7 @@ export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         defaultSize={75}
         className="h-[calc(100vh-4px)]"
       >
-        <div className="flex items-center justify-center p-6 h-full">
-          {children}
-        </div>
+        {children}
       </ResizablePanel>
     </ResizablePanelGroup>
   )
