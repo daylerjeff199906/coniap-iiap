@@ -3,6 +3,9 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable'
+import { SideBar } from '@/modules/admin'
+
+const itemsMenu = []
 
 export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,9 +17,9 @@ export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         defaultSize={25}
         minSize={16}
       >
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">Sidebar</span>
-        </div>
+        <main className="w-full p-4 flex flex-col gap-5">
+          <SideBar />
+        </main>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={75}>
