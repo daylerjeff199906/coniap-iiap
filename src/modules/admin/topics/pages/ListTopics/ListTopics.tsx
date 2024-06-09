@@ -1,0 +1,3 @@
+export const ListTopics = () => {
+  return <></>
+}

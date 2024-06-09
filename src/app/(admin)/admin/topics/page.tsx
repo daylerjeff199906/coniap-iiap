@@ -1,4 +1,59 @@
-import { HeaderPage } from '@/modules/admin'
+import { HeaderPage, TableCustom } from '@/modules/admin'
+import { ICol, IRow } from '@/types'
+
+const columns: ICol[] = [
+  {
+    id: 2,
+    key: 'image',
+    label: 'Imagen',
+    justify: 'center',
+  },
+  {
+    id: 1,
+    key: 'topic',
+    label: 'Tema ',
+    justify: 'center',
+  },
+  {
+    id: 3,
+    key: 'description',
+    label: 'Descripción',
+    justify: 'center',
+  },
+  {
+    id: 4,
+    key: 'status',
+    label: 'Estado',
+    justify: 'center',
+  },
+  // {
+  //   id: 3,
+  //   key: 'actions',
+  //   label: 'Acciones',
+  //   justify: 'center',
+  // },
+]
+
+const invoices: IRow[] = [
+  {
+    id: 1,
+    topic: 'Tema 1',
+    description: 'Descripción del tema 1',
+    status: 'Activo',
+  },
+  {
+    id: 2,
+    topic: 'Tema 2',
+    description: 'Descripción del tema 2',
+    status: 'Activo',
+  },
+  {
+    id: 3,
+    topic: 'Tema 3',
+    description: 'Descripción del tema 3',
+    status: 'Activo',
+  },
+]
 
 export default function Page() {
   return (
@@ -9,6 +64,12 @@ export default function Page() {
         href="/admin/topics/new"
         label="Nuevo tema"
       />
+      <section>
+        <TableCustom
+          cols={columns}
+          rows={invoices}
+        />
+      </section>
     </main>
   )
 }
