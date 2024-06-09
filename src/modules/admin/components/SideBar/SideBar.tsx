@@ -6,7 +6,13 @@ import {
   Button,
 } from '@/components/ui'
 
-import { LayoutDashboard, CalendarCheck, CalendarDays } from 'lucide-react'
+import {
+  LayoutDashboard,
+  CalendarCheck,
+  CalendarDays,
+  Users,
+  Contact,
+} from 'lucide-react'
 import Link from 'next/link'
 
 interface ItemMenu {
@@ -48,6 +54,31 @@ const itemsMenu: ItemMenu[] = [
       },
     ],
   },
+  {
+    title: 'Participantes',
+    icon: <Contact />,
+    path: '/admin/events',
+    subItems: [
+      {
+        title: 'Todos',
+        path: '/admin/participants',
+      },
+      {
+        title: 'Asistentes',
+        path: '/admin/participants/attendees',
+      },
+      {
+        title: 'Ponentes',
+        path: '/admin/participants/speakers',
+      },
+    ],
+  },
+  {
+    title: 'Usuarios',
+    icon: <Users />,
+    path: '/admin/users',
+    subItems: null,
+  },
 ]
 
 export const SideBar = () => {
@@ -70,9 +101,9 @@ export const SideBar = () => {
               {item.subItems ? (
                 <AccordionItem
                   value={index.toString()}
-                  className="border-b-0"
+                  className="border-b-0 "
                 >
-                  <AccordionTrigger>
+                  <AccordionTrigger className="py-2">
                     <div className="flex items-center gap-2">
                       {item.icon}
                       <span>{item.title}</span>
