@@ -1,3 +1,4 @@
+'use client'
 import {
   Button,
   Dialog,
@@ -8,8 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
+  Label,
 } from '@/components/ui'
-// import { Label } from '@/components/ui/label'
+// import { z } from 'zod'
 
 export const FrmTopicEditor = () => {
   return (
@@ -27,12 +29,12 @@ export const FrmTopicEditor = () => {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              {/* <Label
+              <Label
                 htmlFor="name"
                 className="text-right"
               >
                 Name
-              </Label> */}
+              </Label>
               <Input
                 id="name"
                 value="Pedro Duarte"
@@ -40,12 +42,12 @@ export const FrmTopicEditor = () => {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              {/* <Label
+              <Label
                 htmlFor="username"
                 className="text-right"
               >
                 Username
-              </Label> */}
+              </Label>
               <Input
                 id="username"
                 value="@peduarte"
